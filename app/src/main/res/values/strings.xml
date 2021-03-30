@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Rate My Apartment</string>
+    <string name="per_month">/mo</string>
+    <string name="util"> util</string>
+    <string name="top_labels">Top Labels</string>
+    <string name="amenities">AMENITIES</string>
+    <string name="contact">CONTACT</string>
+    <string name="reviews">REVIEWS</string>
+    <string name="getting_around">GETTING AROUND</string>
+    <string name="to_campus">to campus</string>
+    <string name="to_uvx">to UVX</string>
+    <string name="to_grocer">to nearest grocer</string>
 
 </resources>

@@ -15,7 +15,7 @@ import java.util.Random;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class ReviewGenerator {
-    private static final int MAX_REVIEWS = 4;
+    private static final int MAX_REVIEWS = 2;
 
     private static final String BODY_1 = "prompt maintenance but awful parking";
     private static final String BODY_2 = "You might be looking for the best place to stay, trust me, this is not it";
@@ -56,7 +56,7 @@ public class ReviewGenerator {
 
             reviews.add(newRev);
 
-            if (i == reviews.size() - 1)
+            if (i == MAX_REVIEWS - 1)
                 i = 0;
             else i++;
         }

@@ -1,5 +1,7 @@
 package com.example.mobile.model;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.mobile.model.enums.Amenity;
 import com.example.mobile.model.enums.Label;
 import com.example.mobile.model.enums.RoomType;
@@ -9,27 +11,27 @@ import java.util.List;
 
 public class Listing {
 
-    String name;
-    String address;
-    float rating;
-    int monthlyRate;
-    int utilRate;
-    int bedNum;
-    int bathNum;
-    RoomType roomType;
-    byte[] headerImage; //TODO change to something else if better alternative (like path to file)
+    private String name;
+    private String address;
+    private float rating;
+    private int monthlyRate;
+    private int utilRate;
+    private int bedNum;
+    private int bathNum;
+    private RoomType roomType;
+    private Drawable headerImage;
 
-    String phoneNumber;
-    String emailAddress;
-    String website;
+    private String phoneNumber;
+    private String emailAddress;
+    private String website;
 
-    List<Review> reviews;
-    EnumSet<Amenity> amenities;
-    EnumSet<Label> labels;
+    private List<Review> reviews;
+    private EnumSet<Amenity> amenities;
+    private EnumSet labels;
 
-    int timeToCampus;
-    int timeToUVX;
-    int timeToGrocer;
+    private int timeToCampus;
+    private int timeToUVX;
+    private int timeToGrocer;
 
     public Listing(ListingBuilder listingBuilder) {
         this.name = listingBuilder.name;
@@ -52,7 +54,81 @@ public class Listing {
         this.labels = calculateTopLabels();
     }
 
-    float calculateRating() {
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public int getMonthlyRate() {
+        return monthlyRate;
+    }
+
+    public int getUtilRate() {
+        return utilRate;
+    }
+
+    public int getBedNum() {
+        return bedNum;
+    }
+
+    public int getBathNum() {
+        return bathNum;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public EnumSet<Amenity> getAmenities() {
+        return amenities;
+    }
+
+    public EnumSet getLabels() {
+        return labels;
+    }
+
+    public int getTimeToCampus() {
+        return timeToCampus;
+    }
+
+    public int getTimeToUVX() {
+        return timeToUVX;
+    }
+
+    public int getTimeToGrocer() {
+        return timeToGrocer;
+    }
+
+    public Drawable getHeaderImage() {
+        return headerImage;
+    }
+
+    private float calculateRating() {
+        if (reviews.size() == 0)
+            return 0;
         float total = 0;
         for (Review rev : reviews) {
             total += rev.rating;
@@ -60,8 +136,8 @@ public class Listing {
         return total / reviews.size();
     }
 
-    EnumSet calculateTopLabels() {
-        EnumSet<Label> allLabels = EnumSet.noneOf(Label.class); // didn't bother to calculate most occuring labels lol
+    private EnumSet calculateTopLabels() {
+        EnumSet<Label> allLabels = EnumSet.noneOf(Label.class); // didn't bother to calculate most occurring labels lol
         for (Review rev : reviews) {
             allLabels.addAll(rev.labels);
         }

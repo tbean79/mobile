@@ -1,5 +1,7 @@
 package com.example.mobile.model;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.mobile.model.enums.Amenity;
 import com.example.mobile.model.enums.Label;
 import com.example.mobile.model.enums.RoomType;
@@ -16,7 +18,7 @@ public class ListingBuilder {
     int bedNum;
     int bathNum;
     RoomType roomType;
-    byte[] headerImage; //TODO change to something else if better alternative (like path to file or Drawable)
+    Drawable headerImage;
 
     String phoneNumber;
     String emailAddress;
@@ -47,7 +49,7 @@ public class ListingBuilder {
         return this;
     }
 
-    public ListingBuilder image(byte[] image) {
+    public ListingBuilder image(Drawable image) {
         this.headerImage = image;
         return this;
     }
