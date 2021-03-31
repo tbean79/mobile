@@ -21,10 +21,10 @@ public class ListingPresenter {
     private User user;
     private Listing currentListing;
 
-    public ListingPresenter(View view) {
+    public ListingPresenter(View view, int position) {
         this.view = view;
         user = User.getInstance();
-        currentListing = user.getFilteredListings().get(1);
+        currentListing = user.getFilteredListings().get(position);
         init();
     }
 

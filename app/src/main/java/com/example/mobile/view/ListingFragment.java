@@ -32,7 +32,8 @@ import java.util.List;
  */
 public class ListingFragment extends Fragment implements ListingPresenter.View {
 
-    private final int[] listingImages = new int[]{R.drawable.windsor_park};
+    private final int[] listingImages = new int[]{R.drawable.branbury, R.drawable.windsor_park, R.drawable.alta,
+                R.drawable.brittany, R.drawable.village};
 
     ListingPresenter presenter;
 
@@ -96,8 +97,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
                 layoutManager.getOrientation());
         reviewsRecyclerView.addItemDecoration(dividerItemDecoration);
 
-
-        presenter = new ListingPresenter(this);
+        presenter = new ListingPresenter(this, this.getArguments().getInt("position"));
 
         return view;
     }

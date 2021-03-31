@@ -6,9 +6,41 @@ import java.util.EnumSet;
 
 public class Filter {
 
-    int rateUpperBoundary;
-    int ratingUpperBoundary;
-    int distanceToCampusUpperBoundary;
+    private Integer rateUpperBoundary;
+    private Integer ratingLowerBoundary;
+    private Integer distanceToCampusUpperBoundary;
     EnumSet<Amenity> amenityFilters =
             EnumSet.allOf(Amenity.class); // this should init a superset of all amenities
+
+    public Integer getRateUpperBoundary() {
+        return rateUpperBoundary;
+    }
+
+    public void setRateUpperBoundary(Integer rateUpperBoundary) {
+        this.rateUpperBoundary = rateUpperBoundary;
+    }
+
+    public Integer getRatingLowerBoundary() {
+        return ratingLowerBoundary;
+    }
+
+    public void setRatingLowerBoundary(Integer ratingUpperBoundary) {
+        this.ratingLowerBoundary = ratingUpperBoundary;
+    }
+
+    public Integer getDistanceToCampusUpperBoundary() {
+        return distanceToCampusUpperBoundary;
+    }
+
+    public void setDistanceToCampusUpperBoundary(Integer distanceToCampusUpperBoundary) {
+        this.distanceToCampusUpperBoundary = distanceToCampusUpperBoundary;
+    }
+
+    public EnumSet<Amenity> getAmenityFilters() {
+        return amenityFilters;
+    }
+
+    public void setAmenityFilters(EnumSet<Amenity> amenityFilters) {
+        this.amenityFilters = amenityFilters;
+    }
 }

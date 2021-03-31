@@ -23,14 +23,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setSelectedItemId(R.id.browse);
     }
 
-    ListingFragment browseFragment = new ListingFragment();
+    ListingResultsPagerFragment listingResultsPagerFragment = new ListingResultsPagerFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.browse:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, browseFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, listingResultsPagerFragment).commit();
                 return true;
 
                 //TODO add favorites fragment
