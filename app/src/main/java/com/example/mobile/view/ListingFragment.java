@@ -4,8 +4,10 @@ package com.example.mobile.view;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -21,12 +23,15 @@ import com.example.mobile.model.enums.Label;
 import com.example.mobile.presenter.ListingPresenter;
 
 import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ListingFragment extends Fragment implements ListingPresenter.View {
+
+    private final int[] listingImages = new int[]{R.drawable.windsor_park};
 
     ListingPresenter presenter;
 
@@ -40,7 +45,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     TextView bedBathNumRoomTypeText;
     //TODO top label stuff
 
-    //TODO amenities stuff
+    TextView amenitiesListText;
 
     ImageView phoneIcon;
     ImageView emailIcon;
@@ -54,6 +59,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         // Required empty public constructor
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,6 +73,8 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         monthlyRateText = view.findViewById(R.id.monthlyRateTextView);
         utilRateText = view.findViewById(R.id.utilRateTextView);
         bedBathNumRoomTypeText = view.findViewById(R.id.bedBathNumRoomTypeText);
+
+        amenitiesListText = view.findViewById(R.id.amenitiesListTextView);
 
         phoneIcon = view.findViewById(R.id.phoneImageView);
         emailIcon = view.findViewById(R.id.mailImageView);
@@ -82,25 +90,34 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     }
 
     @Override
-    public void initHeader(String name, String address, Drawable headerImageDrawable) {
+    public void initHeader(String name, String address, int headerImageDrawableID) {
         headerNameText.setText(name);
         headerAddressText.setText(address);
-        headerImage.setImageDrawable(headerImageDrawable);
-        headerImage.setImageResource(R.drawable.windsor_park);
+        headerImage.setImageResource(listingImages[headerImageDrawableID]);
     }
 
     @Override
     public void initTopCard(float rating, int monthlyRate, int utilRate, int bathNum, int bedNum, String roomType, EnumSet<Label> topLabels) {
         ratingText.setText(String.valueOf(rating));
-        monthlyRateText.setText(String.valueOf(monthlyRate));
-        utilRateText.setText(String.valueOf(utilRate));
+        String monthlyRateString = "$" + monthlyRate;
+        monthlyRateText.setText(monthlyRateString);
+        String utilRateString = "$" + utilRate + " ";
+        utilRateText.setText(utilRateString);
         String bedBathNumRoomTypeString = bedNum + " Bed " + bathNum + " Bath · " + roomType;
         bedBathNumRoomTypeText.setText(bedBathNumRoomTypeString);
     }
 
     @Override
     public void initAmenitiesCard(EnumSet<Amenity> amenities) {
-
+        String amenitiesListString = "";
+        Iterator<Amenity> it = amenities.iterator();
+        while(it.hasNext()) {
+            Amenity currentAmenity = it.next();
+            amenitiesListString = currentAmenity.getCaption();
+            if (it.hasNext())
+                amenitiesListString += "\n";
+        }
+        amenitiesListText.setText(amenitiesListString);
     }
 
     @Override

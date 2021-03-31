@@ -19,7 +19,7 @@ public class Listing {
     private int bedNum;
     private int bathNum;
     private RoomType roomType;
-    private Drawable headerImage;
+    private int headerImageID;
 
     private String phoneNumber;
     private String emailAddress;
@@ -41,7 +41,7 @@ public class Listing {
         this.bedNum = listingBuilder.bedNum;
         this.bathNum = listingBuilder.bathNum;
         this.roomType = listingBuilder.roomType;
-        this.headerImage = listingBuilder.headerImage;
+        this.headerImageID = listingBuilder.headerImageID;
         this.phoneNumber = listingBuilder.phoneNumber;
         this.emailAddress = listingBuilder.emailAddress;
         this.website = listingBuilder.website;
@@ -122,8 +122,8 @@ public class Listing {
         return timeToGrocer;
     }
 
-    public Drawable getHeaderImage() {
-        return headerImage;
+    public int getHeaderImage() {
+        return headerImageID;
     }
 
     private float calculateRating() {

@@ -31,7 +31,7 @@ public class ListingGenerator {
         listings.add( new ListingBuilder("Windsor Park", "104 W 1230 N, Provo", 435, 55)
                 .bedAndBath(3, 2)
                 .roomType(RoomType.PRIVATE)
-                .image(Drawable.createFromPath("/app/src/main/res/drawable/windsor_park.png"))
+                .image(0)
                 .reviews(ReviewGenerator.getInstance().generateRandomReviews())
                 .amenities(GeneratorUtils.DUMMY_AMENITIES[0])
                 .contact("(801) 224-4846", "frontdesk@aspenridgemanagement.com", "http://www.aspenridgemanagement.com/units/windsor-park-219/")

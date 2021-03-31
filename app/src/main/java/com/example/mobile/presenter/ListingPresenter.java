@@ -1,7 +1,10 @@
 package com.example.mobile.presenter;
 
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.mobile.model.Listing;
 import com.example.mobile.model.Review;
@@ -18,6 +21,7 @@ public class ListingPresenter {
     private User user;
     private Listing currentListing;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public ListingPresenter(View view) {
         this.view = view;
         user = User.getInstance();
@@ -37,7 +41,7 @@ public class ListingPresenter {
     }
 
     public interface View {
-        void initHeader(String name, String address, Drawable headerImageDrawable);
+        void initHeader(String name, String address, int headerImageDrawableID);
         void initTopCard(float rating, int monthlyRate, int utilRate, int bathNum, int bedNum, String roomType,
                          EnumSet<Label> topLabels);
         void initAmenitiesCard(EnumSet<Amenity> amenities);

@@ -18,7 +18,7 @@ public class ListingBuilder {
     int bedNum;
     int bathNum;
     RoomType roomType;
-    Drawable headerImage;
+    int headerImageID;
 
     String phoneNumber;
     String emailAddress;
@@ -49,8 +49,8 @@ public class ListingBuilder {
         return this;
     }
 
-    public ListingBuilder image(Drawable image) {
-        this.headerImage = image;
+    public ListingBuilder image(int image) {
+        this.headerImageID = image;
         return this;
     }
 
