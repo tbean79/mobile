@@ -9,13 +9,12 @@ import com.example.mobile.model.enums.Label;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Random;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class ReviewGenerator {
-    private static final int MAX_REVIEWS = 2;
+    private static final int MAX_REVIEWS = 4;
 
     private static final String BODY_1 = "prompt maintenance but awful parking";
     private static final String BODY_2 = "You might be looking for the best place to stay, trust me, this is not it";

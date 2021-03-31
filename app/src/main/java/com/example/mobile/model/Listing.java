@@ -140,6 +140,8 @@ public class Listing {
         EnumSet<Label> allLabels = EnumSet.noneOf(Label.class); // didn't bother to calculate most occurring labels lol
         for (Review rev : reviews) {
             allLabels.addAll(rev.labels);
+            if (allLabels.size() == 2)
+                break;
         }
         return allLabels;
     }

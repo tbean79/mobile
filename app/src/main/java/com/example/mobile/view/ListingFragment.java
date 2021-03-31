@@ -2,6 +2,7 @@ package com.example.mobile.view;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -14,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mobile.R;
@@ -43,7 +46,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     TextView monthlyRateText;
     TextView utilRateText;
     TextView bedBathNumRoomTypeText;
-    //TODO top label stuff
+    LinearLayout topLablesLayout;
 
     TextView amenitiesListText;
 
@@ -73,6 +76,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         monthlyRateText = view.findViewById(R.id.monthlyRateTextView);
         utilRateText = view.findViewById(R.id.utilRateTextView);
         bedBathNumRoomTypeText = view.findViewById(R.id.bedBathNumRoomTypeText);
+        topLablesLayout = view.findViewById(R.id.labelsLayout);
 
         amenitiesListText = view.findViewById(R.id.amenitiesListTextView);
 
@@ -98,13 +102,28 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
 
     @Override
     public void initTopCard(float rating, int monthlyRate, int utilRate, int bathNum, int bedNum, String roomType, EnumSet<Label> topLabels) {
-        ratingText.setText(String.valueOf(rating));
+        ratingText.setText(String.format("%.1f", rating));
         String monthlyRateString = "$" + monthlyRate;
         monthlyRateText.setText(monthlyRateString);
         String utilRateString = "$" + utilRate + " ";
         utilRateText.setText(utilRateString);
         String bedBathNumRoomTypeString = bedNum + " Bed " + bathNum + " Bath · " + roomType;
         bedBathNumRoomTypeText.setText(bedBathNumRoomTypeString);
+
+        LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lparams.setMargins(5, 3, 5, 3);
+        Iterator<Label> it = topLabels.iterator();
+        while (it.hasNext()) {
+            Label currentLabel = it.next();
+            TextView newLabelView = new TextView(getContext());
+            newLabelView.setLayoutParams(lparams);
+            newLabelView.setPadding(10, 5, 10, 5);
+            newLabelView.setBackgroundColor(Color.parseColor("#e5e5e5"));
+            newLabelView.setTextColor(Color.parseColor("#000000"));
+            newLabelView.setText(currentLabel.getCaption());
+            topLablesLayout.addView(newLabelView);
+        }
     }
 
     @Override
