@@ -21,7 +21,6 @@ public class ListingPresenter {
     private User user;
     private Listing currentListing;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public ListingPresenter(View view) {
         this.view = view;
         user = User.getInstance();

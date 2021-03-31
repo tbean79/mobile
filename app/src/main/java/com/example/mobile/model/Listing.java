@@ -126,6 +126,11 @@ public class Listing {
         return headerImageID;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     private float calculateRating() {
         if (reviews.size() == 0)
             return 0;
@@ -139,7 +144,7 @@ public class Listing {
     private EnumSet calculateTopLabels() {
         EnumSet<Label> allLabels = EnumSet.noneOf(Label.class); // didn't bother to calculate most occurring labels lol
         for (Review rev : reviews) {
-            allLabels.addAll(rev.labels);
+            allLabels.add(rev.getLabels().iterator().next());
             if (allLabels.size() == 2)
                 break;
         }

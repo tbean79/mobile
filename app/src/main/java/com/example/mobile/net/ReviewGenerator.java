@@ -1,18 +1,12 @@
 package com.example.mobile.net;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.example.mobile.model.Review;
-import com.example.mobile.model.enums.Label;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class ReviewGenerator {
     private static final int MAX_REVIEWS = 4;
 
@@ -46,7 +40,7 @@ public class ReviewGenerator {
 
     public List<Review> generateRandomReviews() {
         Random random = new Random();
-        int count = random.nextInt(MAX_REVIEWS);
+        int count = random.nextInt(MAX_REVIEWS - 1) + 1;
         List<Review> reviews = new ArrayList<>(count);
 
         for (int i = random.nextInt(MAX_REVIEWS); reviews.size() < count; ) {

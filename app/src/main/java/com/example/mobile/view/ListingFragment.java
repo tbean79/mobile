@@ -3,21 +3,19 @@ package com.example.mobile.view;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobile.R;
 import com.example.mobile.model.Review;
@@ -58,11 +56,14 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     TextView timeToUVXText;
     TextView timeToGrocerText;
 
+    ReviewRecyclerViewAdapter reviewRecyclerViewAdapter;
+    RecyclerView reviewsRecyclerView;
+    LinearLayoutManager layoutManager;
+
     public ListingFragment() {
         // Required empty public constructor
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,6 +89,14 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         timeToUVXText = view.findViewById(R.id.toUVXTextView);
         timeToGrocerText = view.findViewById(R.id.toGrocerTextView);
 
+        reviewsRecyclerView = view.findViewById(R.id.reviewsRecyclerView);
+        layoutManager = new LinearLayoutManager(this.getContext());
+        reviewsRecyclerView.setLayoutManager(layoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(reviewsRecyclerView.getContext(),
+                layoutManager.getOrientation());
+        reviewsRecyclerView.addItemDecoration(dividerItemDecoration);
+
+
         presenter = new ListingPresenter(this);
 
         return view;
@@ -110,20 +119,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         String bedBathNumRoomTypeString = bedNum + " Bed " + bathNum + " Bath · " + roomType;
         bedBathNumRoomTypeText.setText(bedBathNumRoomTypeString);
 
-        LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lparams.setMargins(5, 3, 5, 3);
-        Iterator<Label> it = topLabels.iterator();
-        while (it.hasNext()) {
-            Label currentLabel = it.next();
-            TextView newLabelView = new TextView(getContext());
-            newLabelView.setLayoutParams(lparams);
-            newLabelView.setPadding(10, 5, 10, 5);
-            newLabelView.setBackgroundColor(Color.parseColor("#e5e5e5"));
-            newLabelView.setTextColor(Color.parseColor("#000000"));
-            newLabelView.setText(currentLabel.getCaption());
-            topLablesLayout.addView(newLabelView);
-        }
+        initLabels(topLabels, topLablesLayout);
     }
 
     @Override
@@ -175,7 +171,8 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
 
     @Override
     public void initReviewsCard(List<Review> reviews) {
-
+        reviewRecyclerViewAdapter = new ReviewRecyclerViewAdapter(reviews, getContext());
+        reviewsRecyclerView.setAdapter(reviewRecyclerViewAdapter);
     }
 
     @Override
@@ -183,5 +180,22 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         timeToCampusText.setText(String.valueOf(timeToCampus));
         timeToUVXText.setText(String.valueOf(timeToUVX));
         timeToGrocerText.setText(String.valueOf(timeToGrocer));
+    }
+
+    public void initLabels(EnumSet<Label> labels, LinearLayout linearLayout) {
+        LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lparams.setMargins(5, 3, 5, 3);
+        Iterator<Label> it = labels.iterator();
+        while (it.hasNext()) {
+            Label currentLabel = it.next();
+            TextView newLabelView = new TextView(getContext());
+            newLabelView.setLayoutParams(lparams);
+            newLabelView.setPadding(10, 5, 10, 5);
+            newLabelView.setBackgroundColor(Color.parseColor("#e5e5e5"));
+            newLabelView.setTextColor(Color.parseColor("#000000"));
+            newLabelView.setText(currentLabel.getCaption());
+            linearLayout.addView(newLabelView);
+        }
     }
 }

@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Facade {
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<Listing> generateRandomListings() {
         return ListingGenerator.generateRandomListings();
     }

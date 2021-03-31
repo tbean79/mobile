@@ -22,7 +22,6 @@ public class User extends Application {
 
     private static User instance;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private User() {
         name = "Sample User";
         filterSettings = new Filter();
@@ -30,7 +29,6 @@ public class User extends Application {
         savedListings = new ArrayList<>();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static User getInstance() {
         if (instance == null) {
             instance = new User();
@@ -54,7 +52,6 @@ public class User extends Application {
         return filterSettings;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate() {
         super.onCreate();

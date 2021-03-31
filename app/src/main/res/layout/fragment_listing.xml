@@ -203,7 +203,6 @@
                         app:layout_constraintTop_toBottomOf="@id/separator"
                         app:layout_constraintStart_toStartOf="parent"/>
 
-                    <!-- TODO for labelsLayout -->
                     <LinearLayout
                         android:id="@+id/labelsLayout"
                         android:layout_width="wrap_content"
@@ -358,7 +357,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                    <!-- TODO container for reviews (make sure it's constrained to reviewsTextView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviewsRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reviewsTextView"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

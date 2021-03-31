@@ -15,7 +15,6 @@ import java.util.List;
 public class ListingGenerator {
     private static final int MAX_LISTINGS = 5;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<Listing> generateRandomListings() {
         List<Listing> listings = new ArrayList<>(MAX_LISTINGS);
 
