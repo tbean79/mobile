@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setSelectedItemId(R.id.browse);
     }
 
-    ListingResultsPagerFragment listingResultsPagerFragment = new ListingResultsPagerFragment();
     ProfileFragment profileFragment = new ProfileFragment();
     HomeFragment homeFragment = new HomeFragment();
 

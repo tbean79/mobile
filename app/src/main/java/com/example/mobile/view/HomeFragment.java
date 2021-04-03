@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment {
     ConstraintLayout rightCardLayout;
 
     MaterialCardView leftCard;
+    MaterialCardView rightCard;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -40,6 +41,27 @@ public class HomeFragment extends Fragment {
         headerImageView = view.findViewById(R.id.homeHeaderImage);
         headerImageView.setImageResource(R.drawable.home);
         headerImageView.setColorFilter(Color.argb(143, 0, 0, 0));
+
+        final ListingResultsPagerFragment pagerFragment = new ListingResultsPagerFragment();
+
+        leftCard = view.findViewById(R.id.leftCardView);
+        leftCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pagerFragment.setIndex(0);
+                getChildFragmentManager().beginTransaction().replace(R.id.flHomeFragment, pagerFragment).commit();
+            }
+        });
+
+        rightCard = view.findViewById(R.id.rightCardView);
+        rightCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pagerFragment.setIndex(1);
+                getChildFragmentManager().beginTransaction().replace(R.id.flHomeFragment, pagerFragment).commit();
+            }
+        });
+
 
         return view;
     }

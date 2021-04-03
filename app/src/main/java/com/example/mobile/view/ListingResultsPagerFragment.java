@@ -18,12 +18,15 @@ import com.example.mobile.R;
 public class ListingResultsPagerFragment extends Fragment {
 
     ViewPager2 resultsViewPager;
+    private int index;
 
 
     public ListingResultsPagerFragment() {
-        // Required empty public constructor
     }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +36,7 @@ public class ListingResultsPagerFragment extends Fragment {
         final ResultsFragmentStateAdapter resultsFragmentStateAdapter = new ResultsFragmentStateAdapter(this, getContext());
         resultsViewPager = view.findViewById(R.id.resultsViewPager);
         resultsViewPager.setAdapter(resultsFragmentStateAdapter);
+        resultsViewPager.setCurrentItem(index);
         resultsViewPager.setSaveEnabled(false);
 
         return view;
