@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ListingFragment">
+    ​
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e5e5e5">
+        ​
+        ​
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            ​
+            ​
+            <RelativeLayout
+                android:id="@+id/relativeLayoutHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                ​
+                <ImageView
+                    android:id="@+id/homeHeaderImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:tint="#5089fa"/>
+
+                    ​
+                <TextView
+                    android:id="@+id/headerNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/homeHeaderImage"
+                    android:layout_alignTop="@id/homeHeaderImage"
+                    android:layout_alignRight="@id/homeHeaderImage"
+                    android:layout_alignBottom="@id/homeHeaderImage"
+                    android:layout_margin="1dp"
+                    android:gravity="bottom|left"
+                    android:text="@string/find"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF" />
+                    ​
+                    ​ ​
+            </RelativeLayout>
+
+            <TableLayout
+                android:id="@+id/homeCardTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/relativeLayoutHeader"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TableRow
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center">
+            ​
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/leftCardView"
+                        android:layout_width="135dp"
+                        android:layout_height="200dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/leftConstraintLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="20dp"
+                            android:background="@drawable/branbury_home">
+                            ​
+                            <TextView
+                                android:id="@+id/ratingTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|left"
+                                android:background="@drawable/rounded_corner"
+                                android:gravity="center"
+                                android:paddingHorizontal="5dp"
+                                android:paddingVertical="5dp"
+                                android:shape="rectangle"
+                                android:textColor="#ffffff"
+                                android:text="9.6"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            ​
+                            ​
+                            <LinearLayout
+                                android:id="@+id/monthlyRateLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/ratingTextView">
+                                ​
+                                <TextView
+                                    android:id="@+id/monthlyRateTextView"
+                                    android:text="$430"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
+                                ​
+                                <TextView
+                                    android:id="@+id/perMonthTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/per_month"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold" />
+                                ​
+                            </LinearLayout>
+                            ​
+                            <LinearLayout
+                                android:id="@+id/utilLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|right"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/monthlyRateLayout">
+                                ​
+                                <TextView
+                                    android:id="@+id/utilRateTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="$34 "
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold" />
+                                ​
+                                <TextView
+                                    android:id="@+id/utilStringTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/util"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    app:layout_constraintStart_toEndOf="@+id/monthlyRateTextView" />
+                                ​
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        ​
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/rightCardView"
+                        android:layout_width="135dp"
+                        android:layout_height="200dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="20dp"
+                        app:layout_constraintStart_toEndOf="@id/leftCardView"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/rightConstraintLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="20dp"
+                            android:background="@drawable/village_home">
+                            ​
+                            <TextView
+                                android:id="@+id/rightRatingTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|left"
+                                android:background="@drawable/rounded_corner"
+                                android:gravity="center"
+                                android:paddingHorizontal="5dp"
+                                android:paddingVertical="5dp"
+                                android:shape="rectangle"
+                                android:textColor="#ffffff"
+                                android:text="9.6"
+                                android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            ​
+                            ​
+                            <LinearLayout
+                                android:id="@+id/rightMonthlyRateLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/rightRatingTextView">
+                                ​
+                                <TextView
+                                    android:id="@+id/rightMonthlyRateTextView"
+                                    android:text="$430"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
+                                ​
+                                <TextView
+                                    android:id="@+id/rightPerMonthTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/per_month"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold" />
+                                ​
+                            </LinearLayout>
+                            ​
+                            <LinearLayout
+                                android:id="@+id/rightUtilLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|right"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/rightMonthlyRateLayout">
+                                ​
+                                <TextView
+                                    android:id="@+id/rightUtilRateTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="$34 "
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold" />
+                                ​
+                                <TextView
+                                    android:id="@+id/rightUtilStringTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/util"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    app:layout_constraintStart_toEndOf="@+id/monthlyRateTextView" />
+                                ​
+                            </LinearLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        ​
+                    </com.google.android.material.card.MaterialCardView>
+                </TableRow>
+
+            </TableLayout>
+            ​
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        ​
+    </ScrollView>
+    ​
+</FrameLayout>
