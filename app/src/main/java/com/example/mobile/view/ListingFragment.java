@@ -22,6 +22,7 @@ import com.example.mobile.model.Review;
 import com.example.mobile.model.enums.Amenity;
 import com.example.mobile.model.enums.Label;
 import com.example.mobile.presenter.ListingPresenter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.EnumSet;
 import java.util.Iterator;
@@ -61,6 +62,9 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     RecyclerView reviewsRecyclerView;
     LinearLayoutManager layoutManager;
 
+    FloatingActionButton fab;
+    boolean savedToFavorites;
+
     public ListingFragment() {
         // Required empty public constructor
     }
@@ -96,6 +100,8 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(reviewsRecyclerView.getContext(),
                 layoutManager.getOrientation());
         reviewsRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        fab = view.findViewById(R.id.fab);
 
         presenter = new ListingPresenter(this, this.getArguments().getInt("position"));
 
@@ -195,7 +201,34 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
             newLabelView.setBackgroundColor(Color.parseColor("#e5e5e5"));
             newLabelView.setTextColor(Color.parseColor("#000000"));
             newLabelView.setText(currentLabel.getCaption());
+            newLabelView.setTextSize(12);
             linearLayout.addView(newLabelView);
         }
+    }
+
+    public void initFAB(boolean saved) {
+        if (saved) {
+            savedToFavorites = true;
+            fab.setImageResource(R.drawable.ic_saved);
+        }
+        else {
+            savedToFavorites = false;
+            fab.setImageResource(R.drawable.ic_add);
+        }
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (savedToFavorites) {
+                    presenter.removeCurrentListingFromFavorites();
+                    savedToFavorites = false;
+                    fab.setImageResource(R.drawable.ic_add);
+                }
+                else {
+                    presenter.addCurrentListingToFavorites();
+                    savedToFavorites = true;
+                    fab.setImageResource(R.drawable.ic_saved);
+                }
+            }
+        });
     }
 }

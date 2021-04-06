@@ -10,21 +10,24 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e5e5e5">
+        android:background="#e5e5e5"
+        android:fillViewport="true"
+        >
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="100dp"
+            >
 
 
             <RelativeLayout
                 android:id="@+id/relativeLayoutHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -56,7 +59,8 @@
                         android:layout_alignTop="@id/headerImage"
                         android:layout_alignRight="@id/headerImage"
                         android:layout_alignBottom="@id/headerImage"
-                        android:layout_margin="1dp"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/roboto_bold"
                         android:textColor="#FFFFFF" />
 
                     <TextView
@@ -67,7 +71,9 @@
                         android:layout_alignTop="@id/headerImage"
                         android:layout_alignRight="@id/headerImage"
                         android:layout_alignBottom="@id/headerImage"
-                        android:layout_margin="1dp"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/roboto_bolditalic"
                         android:textColor="#FFFFFF" />
 
                 </LinearLayout>
@@ -105,8 +111,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textStyle="bold"
-                            android:textSize="32sp"/>
+                            android:fontFamily="@font/roboto_bold"
+                            android:textSize="36sp"/>
 
                         <TextView
                             android:id="@+id/perMonthTextView"
@@ -114,7 +120,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/per_month"
                             android:textColor="#000000"
-                            android:textStyle="bold" />
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_bold" />
 
                     </LinearLayout>
                     <LinearLayout
@@ -130,7 +137,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textStyle="bold" />
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_bold" />
 
                         <TextView
                             android:id="@+id/utilStringTextView"
@@ -138,7 +146,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/util"
                             android:textColor="#000000"
-                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_bold"
                             app:layout_constraintStart_toEndOf="@+id/monthlyRateTextView" />
 
                     </LinearLayout>
@@ -156,10 +165,11 @@
                         android:layout_gravity="top|left"
                         android:gravity="center"
                         android:paddingHorizontal="15dp"
-                        android:paddingVertical="15dp"
+                        android:paddingVertical="12dp"
                         android:shape="rectangle"
                         android:textColor="#ffffff"
                         android:textSize="24sp"
+                        android:fontFamily="@font/roboto_bold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -173,11 +183,13 @@
                         app:layout_constraintTop_toBottomOf="@id/ratingTextView"
                         app:layout_constraintStart_toStartOf="parent"
                         android:paddingVertical="10dp">
+
                         <TextView
                             android:id="@+id/bedBathNumRoomTypeText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
+                            android:fontFamily="@font/roboto_regular"
                             android:textSize="24sp" />
 
                     </LinearLayout>
@@ -198,16 +210,18 @@
                         android:layout_height="wrap_content"
                         android:text="@string/top_labels"
                         android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:textStyle="italic"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/roboto_italic"
                         app:layout_constraintTop_toBottomOf="@id/separator"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="5dp"/>
 
                     <LinearLayout
                         android:id="@+id/labelsLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                         app:layout_constraintTop_toBottomOf="@id/topLabelsStringTextView"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -238,6 +252,7 @@
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:text="@string/amenities"
+                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -247,6 +262,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="#000000"
                     android:textSize="18sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingLeft="10dp"
                     app:layout_constraintTop_toBottomOf="@id/amenitiesTextView"
                     app:layout_constraintStart_toStartOf="parent"/>
 
@@ -277,6 +294,7 @@
                         android:textColor="#000000"
                         android:textSize="24sp"
                         android:text="@string/contact"
+                        android:fontFamily="@font/roboto_regular"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -336,7 +354,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="100dp"
                 android:background="#ffffff"
                 app:contentPadding="20dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -354,6 +373,7 @@
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:text="@string/reviews"
+                    android:fontFamily="@font/roboto_regular"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -361,6 +381,7 @@
                     android:id="@+id/reviewsRecyclerView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/reviewsTextView"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -385,7 +406,7 @@
 
                 <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TableRow
                         android:gravity="center_horizontal">
@@ -396,6 +417,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
                             android:textSize="24sp"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/getting_around" />
 
                         <ImageView
@@ -414,12 +436,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:text="@string/to_campus" />
+                            android:text="@string/to_campus"
+                            android:textSize="18sp"
+                            android:paddingLeft="10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            />
 
                         <TextView
                             android:id="@+id/toCampusTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:paddingLeft="10dp"
                             android:textColor="#000000" />
 
                     </TableRow>
@@ -432,12 +461,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:paddingLeft="10dp"
                             android:text="@string/to_uvx" />
 
                         <TextView
                             android:id="@+id/toUVXTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:paddingLeft="10dp"
                             android:textColor="#000000" />
 
                     </TableRow>
@@ -450,13 +485,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:text="@string/to_grocer" />
+                            android:text="@string/to_grocer"
+                            android:textSize="18sp"
+                            android:paddingLeft="10dp"
+                            android:fontFamily="@font/roboto_regular"/>
 
                         <TextView
                             android:id="@+id/toGrocerTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#000000" />
+                            android:textColor="#000000"
+                            android:textSize="18sp"
+                            android:paddingLeft="10dp"
+                            android:fontFamily="@font/roboto_regular"/>
 
                     </TableRow>
 
@@ -469,5 +510,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        app:fabCustomSize="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|end"
+        android:background="@color/white"
+        android:layout_margin="15dp"/>
 
 </FrameLayout>

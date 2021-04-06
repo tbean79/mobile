@@ -1,11 +1,5 @@
 package com.example.mobile.presenter;
 
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.view.View;
-
-import androidx.annotation.RequiresApi;
-
 import com.example.mobile.model.Listing;
 import com.example.mobile.model.Review;
 import com.example.mobile.model.User;
@@ -37,6 +31,15 @@ public class ListingPresenter {
         view.initContactCard(currentListing.getPhoneNumber(), currentListing.getEmailAddress(), currentListing.getWebsite());
         view.initReviewsCard(currentListing.getReviews());
         view.initGettingAroundCard(currentListing.getTimeToCampus(), currentListing.getTimeToUVX(), currentListing.getTimeToGrocer());
+        view.initFAB(user.getSavedListings().contains(currentListing));
+    }
+
+    public void addCurrentListingToFavorites() {
+        user.getSavedListings().add(currentListing);
+    }
+
+    public void removeCurrentListingFromFavorites() {
+        user.getSavedListings().remove(currentListing);
     }
 
     public interface View {
@@ -47,5 +50,6 @@ public class ListingPresenter {
         void initContactCard(String phoneNumber, String emailAddress, String website);
         void initReviewsCard(List<Review> reviews);
         void initGettingAroundCard(int timeToCampus, int timeToUVX, int timeToGrocer);
+        void initFAB(boolean saved);
     }
 }

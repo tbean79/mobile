@@ -77,7 +77,8 @@ class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecyclerViewA
             String reviewNameDateString = review.getName() + " · " + formatter.format(review.getTime());
             reviewNameDateView.setText(reviewNameDateString);
             initLabels(review.getLabels(), reviewLabelsLayout);
-            reviewBodyTextView.setText(review.getBody());
+            String bodyString = "\"" + review.getBody() + "\"";
+            reviewBodyTextView.setText(bodyString);
         }
 
         public void initLabels(EnumSet<Label> labels, LinearLayout linearLayout) {
@@ -92,7 +93,7 @@ class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecyclerViewA
                 newLabelView.setPadding(10, 5, 10, 5);
                 newLabelView.setBackgroundColor(Color.parseColor("#e5e5e5"));
                 newLabelView.setTextColor(Color.parseColor("#000000"));
-                newLabelView.setTextSize(12);
+                newLabelView.setTextSize(10);
                 newLabelView.setText(currentLabel.getCaption());
                 linearLayout.addView(newLabelView);
             }

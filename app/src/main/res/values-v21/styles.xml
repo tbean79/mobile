@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/navy</item>
         <item name="colorSecondary">@color/navy</item>
+        <item name="colorOnSecondary">@color/white</item>
         <item name="android:textColorPrimary">@color/navy</item>
         <item name="android:textColorSecondary">@color/navy</item>
 
