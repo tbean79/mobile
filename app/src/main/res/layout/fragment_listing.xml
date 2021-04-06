@@ -386,6 +386,17 @@
                     app:layout_constraintTop_toBottomOf="@id/reviewsTextView"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+                <TextView
+                    android:id="@+id/seeMoreTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/reviewsRecyclerView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center_horizontal"
+                    android:text="See More  ▼"/>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>

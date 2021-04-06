@@ -61,6 +61,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     ReviewRecyclerViewAdapter reviewRecyclerViewAdapter;
     RecyclerView reviewsRecyclerView;
     LinearLayoutManager layoutManager;
+    TextView seeMoreTextView;
 
     FloatingActionButton fab;
     boolean savedToFavorites;
@@ -100,6 +101,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(reviewsRecyclerView.getContext(),
                 layoutManager.getOrientation());
         reviewsRecyclerView.addItemDecoration(dividerItemDecoration);
+        seeMoreTextView = view.findViewById(R.id.seeMoreTextView);
 
         fab = view.findViewById(R.id.fab);
 
@@ -177,8 +179,21 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
 
     @Override
     public void initReviewsCard(List<Review> reviews) {
-        reviewRecyclerViewAdapter = new ReviewRecyclerViewAdapter(reviews, getContext());
+        List<Review> firstReview = reviews.subList(0, 1);
+        final List<Review> restReviews = reviews.subList(1, reviews.size());
+        reviewRecyclerViewAdapter = new ReviewRecyclerViewAdapter(firstReview, getContext());
         reviewsRecyclerView.setAdapter(reviewRecyclerViewAdapter);
+        if (restReviews.size() == 0)
+            seeMoreTextView.setVisibility(View.INVISIBLE);
+        else {
+            seeMoreTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    reviewRecyclerViewAdapter.addItems(restReviews);
+                    seeMoreTextView.setVisibility(View.INVISIBLE);
+                }
+            });
+        }
     }
 
     @Override
