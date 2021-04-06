@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     BottomNavigationView bottomNavigationView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,16 +25,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     ProfileFragment profileFragment = new ProfileFragment();
-    HomeFragment homeFragment = new HomeFragment();
+    FavoritesFragment favoritesFragment = new FavoritesFragment();
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.browse:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, homeFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new HomeFragment()).commit();
                 return true;
 
-                //TODO add favorites fragment
+            case R.id.favorites:
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, favoritesFragment).commit();
+                return true;
 
             case R.id.profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profileFragment).commit();

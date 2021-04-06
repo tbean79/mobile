@@ -29,8 +29,8 @@ public class HomeFragment extends Fragment {
     RecyclerView homeCardRecyclerView;
     GridLayoutManager layoutManager;
 
+
     public HomeFragment() {
-        // Required empty public constructor
     }
 
 
@@ -53,5 +53,4 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
-
 }

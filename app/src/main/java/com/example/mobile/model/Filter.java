@@ -10,7 +10,7 @@ public class Filter {
     private Integer ratingLowerBoundary;
     private Integer distanceToCampusUpperBoundary;
     EnumSet<Amenity> amenityFilters =
-            EnumSet.allOf(Amenity.class); // this should init a superset of all amenities
+            EnumSet.noneOf(Amenity.class);
 
     public Integer getRateUpperBoundary() {
         return rateUpperBoundary;

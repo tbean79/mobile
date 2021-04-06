@@ -5,6 +5,10 @@
         android:title="Browse"
         android:icon="@drawable/ic_search_foreground"/>
     <item
+        android:id="@+id/favorites"
+        android:title="Favorites"
+        android:icon="@drawable/ic_star_foreground"/>
+    <item
         android:id="@+id/profile"
         android:title="My Profile"
         android:icon="@drawable/ic_person_foreground"/>
