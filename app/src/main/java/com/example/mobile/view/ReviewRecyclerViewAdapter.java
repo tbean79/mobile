@@ -2,6 +2,7 @@ package com.example.mobile.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,7 @@ class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecyclerViewA
 
         void bindReview(Review review) {
             ratingView.setText(String.valueOf(review.getRating()));
+            setRatingColor(review.getRating(), ratingView);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d YYYY");
             String reviewNameDateString = review.getName() + " · " + formatter.format(review.getTime());
             reviewNameDateView.setText(reviewNameDateString);
@@ -96,6 +98,19 @@ class ReviewRecyclerViewAdapter extends RecyclerView.Adapter<ReviewRecyclerViewA
                 newLabelView.setTextSize(10);
                 newLabelView.setText(currentLabel.getCaption());
                 linearLayout.addView(newLabelView);
+            }
+        }
+
+        public void setRatingColor(float rating, TextView textView) {
+            GradientDrawable backgroundDrawable = (GradientDrawable) textView.getBackground();
+            if (rating < 4) {
+                backgroundDrawable.setColor(context.getResources().getColor(R.color.red));
+            }
+            else if (rating < 7) {
+                backgroundDrawable.setColor(context.getResources().getColor(R.color.yellow));
+            }
+            else {
+                backgroundDrawable.setColor(context.getResources().getColor(R.color.green));
             }
         }
     }

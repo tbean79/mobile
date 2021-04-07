@@ -3,6 +3,9 @@ package com.example.mobile.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -120,6 +123,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
     @Override
     public void initTopCard(float rating, int monthlyRate, int utilRate, int bathNum, int bedNum, String roomType, EnumSet<Label> topLabels) {
         ratingText.setText(String.format("%.1f", rating));
+        setRatingColor(rating, ratingText);
         String monthlyRateString = "$" + monthlyRate;
         monthlyRateText.setText(monthlyRateString);
         String utilRateString = "$" + utilRate + " ";
@@ -128,6 +132,19 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         bedBathNumRoomTypeText.setText(bedBathNumRoomTypeString);
 
         initLabels(topLabels, topLablesLayout);
+    }
+
+    public void setRatingColor(float rating, TextView textView) {
+        GradientDrawable backgroundDrawable = (GradientDrawable) textView.getBackground();
+        if (rating < 4) {
+            backgroundDrawable.setColor(getResources().getColor(R.color.red));
+        }
+        else if (rating < 7) {
+            backgroundDrawable.setColor(getResources().getColor(R.color.yellow));
+        }
+        else {
+            backgroundDrawable.setColor(getResources().getColor(R.color.green));
+        }
     }
 
     @Override
@@ -186,6 +203,12 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         if (restReviews.size() == 0)
             seeMoreTextView.setVisibility(View.INVISIBLE);
         else {
+            String seeMoreString;
+            if (restReviews.size() == 1)
+                seeMoreString = "See " + restReviews.size() + " more review ▼";
+            else
+                seeMoreString = "See " + restReviews.size() + " more reviews ▼";
+            seeMoreTextView.setText(seeMoreString);
             seeMoreTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

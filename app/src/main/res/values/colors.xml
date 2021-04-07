@@ -2,5 +2,9 @@
 <resources>
     <color name="navy">#002e3e</color>
     <color name="white">#FFFFFF</color>
-    <color name="off_white">#e5e5e5</color>
+    <color name="off_white">#D1D1D1</color>
+    <color name="green">#226C50</color>
+    <color name="yellow">#f2d00e</color>
+    <!--<color name="red">#710c16</color>-->
+    <color name="red">#ac0a17</color>
 </resources>

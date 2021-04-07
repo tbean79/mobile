@@ -1,6 +1,7 @@
 package com.example.mobile.view;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import com.google.android.material.card.MaterialCardView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeCardRecyclerViewAdapter extends RecyclerView.Adapter<HomeCardRecyclerViewAdapter.CardHolder> {
+public class CardRecyclerViewAdapter extends RecyclerView.Adapter<CardRecyclerViewAdapter.CardHolder> {
 
     final ListingResultsPagerFragment pagerFragment = new ListingResultsPagerFragment();
     private final List<Listing> listings = new ArrayList<>();
@@ -28,7 +29,7 @@ public class HomeCardRecyclerViewAdapter extends RecyclerView.Adapter<HomeCardRe
     private final int[] listingImages = new int[]{R.drawable.branbury_home, R.drawable.windsor_park_home, R.drawable.alta_home,
             R.drawable.brittany_home, R.drawable.village_home};
 
-    public HomeCardRecyclerViewAdapter(Context context, List<Listing> listings) {
+    public CardRecyclerViewAdapter(Context context, List<Listing> listings) {
         this.context = context;
         addItems(listings);
     }
@@ -38,7 +39,7 @@ public class HomeCardRecyclerViewAdapter extends RecyclerView.Adapter<HomeCardRe
     public CardHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.grid_card, parent, false);
-        return new HomeCardRecyclerViewAdapter.CardHolder(view);
+        return new CardRecyclerViewAdapter.CardHolder(view);
     }
 
     @Override
@@ -85,10 +86,24 @@ public class HomeCardRecyclerViewAdapter extends RecyclerView.Adapter<HomeCardRe
             });
             cardLayout.setBackgroundResource(listingImages[listing.getHeaderImage()]);
             gridRatingTextView.setText(String.format("%.1f", listing.getRating()));
+            setRatingColor(listing.getRating(), gridRatingTextView);
             String monthlyRateString = "$" + listing.getMonthlyRate();
             gridMonthlyRateTextView.setText(monthlyRateString);
             String utilRateString = "$" + listing.getUtilRate() + " ";
             gridUtilRateTextView.setText(utilRateString);
+        }
+
+        public void setRatingColor(float rating, TextView textView) {
+            GradientDrawable backgroundDrawable = (GradientDrawable) textView.getBackground();
+            if (rating < 4) {
+                backgroundDrawable.setColor(context.getResources().getColor(R.color.red));
+            }
+            else if (rating < 7) {
+                backgroundDrawable.setColor(context.getResources().getColor(R.color.yellow));
+            }
+            else {
+                backgroundDrawable.setColor(context.getResources().getColor(R.color.green));
+            }
         }
     }
 }

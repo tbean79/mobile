@@ -10,7 +10,7 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e5e5e5"
+        android:background="#D1D1D1"
         android:fillViewport="true"
         >
 
@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="100dp"
-            >
+            android:paddingBottom="100dp">
 
 
             <RelativeLayout
@@ -88,6 +87,9 @@
                 android:layout_marginVertical="30dp"
                 android:background="#ffffff"
                 app:contentPadding="20dp"
+                app:cardElevation="12dp"
+                app:cardMaxElevation="36dp"
+                android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/relativeLayoutHeader"
                 tools:layout_editor_absoluteY="181dp">
@@ -237,6 +239,9 @@
                 android:layout_marginVertical="30dp"
                 android:background="#ffffff"
                 app:contentPadding="20dp"
+                app:cardElevation="12dp"
+                app:cardMaxElevation="36dp"
+                android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/topCardView"
                 tools:layout_editor_absoluteY="181dp">
@@ -279,6 +284,9 @@
                 android:layout_marginVertical="30dp"
                 android:background="#ffffff"
                 app:contentPadding="20dp"
+                app:cardElevation="12dp"
+                app:cardMaxElevation="36dp"
+                android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/amenitiesCardView"
                 tools:layout_editor_absoluteY="181dp">
@@ -358,6 +366,9 @@
                 android:layout_marginBottom="100dp"
                 android:background="#ffffff"
                 app:contentPadding="20dp"
+                app:cardElevation="12dp"
+                app:cardMaxElevation="36dp"
+                android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/contactCardView"
                 tools:layout_editor_absoluteY="181dp">
@@ -410,6 +421,9 @@
                 android:layout_marginVertical="30dp"
                 android:background="#ffffff"
                 app:contentPadding="20dp"
+                app:cardElevation="12dp"
+                app:cardMaxElevation="36dp"
+                android:elevation="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/reviewsCardView"
                 tools:layout_editor_absoluteY="181dp">
