@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         layoutManager = new GridLayoutManager(this.getContext(), 2);
         cardRecyclerView.setLayoutManager(layoutManager);
 
-        cardRecyclerViewAdapter = new CardRecyclerViewAdapter(getContext(), User.getInstance().getFilteredListings());
+        cardRecyclerViewAdapter = new CardRecyclerViewAdapter(getContext(), User.getInstance().getFilteredListings(), true);
         cardRecyclerView.setAdapter(cardRecyclerViewAdapter);
 
         return view;

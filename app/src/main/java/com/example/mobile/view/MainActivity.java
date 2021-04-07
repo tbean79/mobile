@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     ProfileFragment profileFragment = new ProfileFragment();
-    FavoritesFragment favoritesFragment = new FavoritesFragment();
 
 
     @Override
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.favorites:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, favoritesFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new FavoritesFragment()).commit();
                 return true;
 
             case R.id.profile:

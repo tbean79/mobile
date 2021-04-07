@@ -11,10 +11,12 @@ public class ResultsFragmentStateAdapter extends FragmentStateAdapter {
 
     Context mContext;
     final int LARGE_SIZE=5;
+    boolean forHome;
 
-    public ResultsFragmentStateAdapter(@NonNull Fragment fragment, Context context) {
+    public ResultsFragmentStateAdapter(@NonNull Fragment fragment, Context context, boolean forHome) {
         super(fragment);
         mContext = context;
+        this.forHome = forHome;
     }
 
     @NonNull
@@ -23,6 +25,7 @@ public class ResultsFragmentStateAdapter extends FragmentStateAdapter {
         ListingFragment fragment = new ListingFragment();
         Bundle args = new Bundle();
         args.putInt("position", position);
+        args.putBoolean("forHome", forHome);
         fragment.setArguments(args);
         return fragment;
     }

@@ -108,7 +108,8 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
 
         fab = view.findViewById(R.id.fab);
 
-        presenter = new ListingPresenter(this, this.getArguments().getInt("position"));
+        presenter = new ListingPresenter(this, this.getArguments().getInt("position"),
+                this.getArguments().getBoolean("forHome"));
 
         return view;
     }

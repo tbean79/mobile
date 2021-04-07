@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FavoritesFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:id="@+id/flHomeFragment"
+    tools:context=".view.ListingFragment">
+    ​
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#D1D1D1">
+        ​
+        ​
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            ​
+            ​
+            <RelativeLayout
+                android:id="@+id/relativeLayoutHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                ​
+                <ImageView
+                    android:id="@+id/homeHeaderImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:tint="#5089fa"/>
 
+                ​
+                <TextView
+                    android:id="@+id/headerNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/homeHeaderImage"
+                    android:layout_alignTop="@id/homeHeaderImage"
+                    android:layout_alignRight="@id/homeHeaderImage"
+                    android:layout_alignBottom="@id/homeHeaderImage"
+                    android:layout_margin="1dp"
+                    android:gravity="bottom|left"
+                    android:text="@string/favorites"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:paddingLeft="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColor="#FFFFFF" />
+                ​
+                ​ ​
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homeCardRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/relativeLayoutHeader"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <TextView
+                android:id="@+id/noneSavedText"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayoutHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="★ saved listings will appear here"
+                android:textColor="#000000"
+                android:paddingTop="30dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_italic"/>
+
+
+            ​
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        ​
+    </ScrollView>
+    ​
 </FrameLayout>

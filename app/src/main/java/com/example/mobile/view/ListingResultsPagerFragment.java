@@ -19,6 +19,7 @@ public class ListingResultsPagerFragment extends Fragment {
 
     ViewPager2 resultsViewPager;
     private int index;
+    boolean forHome;
 
 
     public ListingResultsPagerFragment() {
@@ -28,12 +29,16 @@ public class ListingResultsPagerFragment extends Fragment {
         this.index = index;
     }
 
+    public void setForHome(boolean forHome) {
+        this.forHome = forHome;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listing_results_pager, container, false);
 
-        final ResultsFragmentStateAdapter resultsFragmentStateAdapter = new ResultsFragmentStateAdapter(this, getContext());
+        final ResultsFragmentStateAdapter resultsFragmentStateAdapter = new ResultsFragmentStateAdapter(this, getContext(), forHome);
         resultsViewPager = view.findViewById(R.id.resultsViewPager);
         resultsViewPager.setAdapter(resultsFragmentStateAdapter);
         resultsViewPager.setCurrentItem(index);

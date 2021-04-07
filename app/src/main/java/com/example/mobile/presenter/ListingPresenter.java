@@ -15,10 +15,13 @@ public class ListingPresenter {
     private User user;
     private Listing currentListing;
 
-    public ListingPresenter(View view, int position) {
+    public ListingPresenter(View view, int position, boolean forHome) {
         this.view = view;
         user = User.getInstance();
-        currentListing = user.getFilteredListings().get(position);
+        if (forHome)
+            currentListing = user.getFilteredListings().get(position);
+        else
+            currentListing = user.getSavedListings().get(position);
         init();
     }
 

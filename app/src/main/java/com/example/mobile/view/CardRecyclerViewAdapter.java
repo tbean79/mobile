@@ -25,13 +25,15 @@ public class CardRecyclerViewAdapter extends RecyclerView.Adapter<CardRecyclerVi
     final ListingResultsPagerFragment pagerFragment = new ListingResultsPagerFragment();
     private final List<Listing> listings = new ArrayList<>();
     Context context;
+    boolean forHome;
 
     private final int[] listingImages = new int[]{R.drawable.branbury_home, R.drawable.windsor_park_home, R.drawable.alta_home,
             R.drawable.brittany_home, R.drawable.village_home};
 
-    public CardRecyclerViewAdapter(Context context, List<Listing> listings) {
+    public CardRecyclerViewAdapter(Context context, List<Listing> listings, boolean forHome) {
         this.context = context;
         addItems(listings);
+        this.forHome = forHome;
     }
 
     @NonNull
@@ -66,6 +68,7 @@ public class CardRecyclerViewAdapter extends RecyclerView.Adapter<CardRecyclerVi
         TextView gridMonthlyRateTextView;
         TextView gridUtilRateTextView;
 
+
         public CardHolder(@NonNull View itemView) {
             super(itemView);
             card = itemView.findViewById(R.id.cardView);
@@ -81,6 +84,7 @@ public class CardRecyclerViewAdapter extends RecyclerView.Adapter<CardRecyclerVi
                 @Override
                 public void onClick(View v) {
                     pagerFragment.setIndex(position);
+                    pagerFragment.setForHome(forHome);
                     manager.beginTransaction().replace(R.id.flHomeFragment, pagerFragment).commit();
                 }
             });
