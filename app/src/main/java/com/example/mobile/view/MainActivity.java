@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.example.mobile.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements ProfileFragment.ProfileInterface, BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setSelectedItemId(R.id.browse);
     }
 
-    ProfileFragment profileFragment = new ProfileFragment();
+    ProfileFragment profileFragment = new ProfileFragment(this);
 
 
     @Override
@@ -43,5 +43,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public void swapToListing() {
+        ListingResultsPagerFragment listingResultsFragment = new ListingResultsPagerFragment();
+        listingResultsFragment.setIndex(0); // 0 for first position
+        listingResultsFragment.setForHome(true);
+        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, listingResultsFragment).commit();
+        //setContentView(R.layout.activity_main);
+        bottomNavigationView.getMenu().findItem(R.id.browse).setChecked(true);
     }
 }

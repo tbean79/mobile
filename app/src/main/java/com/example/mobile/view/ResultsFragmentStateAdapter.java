@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.mobile.model.User;
+
 public class ResultsFragmentStateAdapter extends FragmentStateAdapter {
 
     Context mContext;
@@ -32,6 +34,6 @@ public class ResultsFragmentStateAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return LARGE_SIZE;
+        return User.getInstance().getFilteredListings().size();
     }
 }

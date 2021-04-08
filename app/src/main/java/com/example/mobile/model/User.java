@@ -68,32 +68,47 @@ public class User extends Application {
 
     public void updateFilteredListings() {
         resetToAllListings();
-        if (filterSettings.getRateUpperBoundary() != null) {
-            int upperBoundary = filterSettings.getRateUpperBoundary();
-            for (Listing listing : filteredListings) {
-                if (listing.getMonthlyRate() > upperBoundary)
-                    filteredListings.remove(listing);
-            }
-        }
-        if (filterSettings.getRatingLowerBoundary() != null) {
-            int lowerBoundary = filterSettings.getRatingLowerBoundary();
-            for (Listing listing : filteredListings) {
-                if (listing.getRating() < lowerBoundary)
-                    filteredListings.remove(listing);
-            }
-        }
-        if (filterSettings.getDistanceToCampusUpperBoundary() != null) {
-            int upperBoundary = filterSettings.getDistanceToCampusUpperBoundary();
-            for (Listing listing : filteredListings) {
-                if (listing.getRating() > upperBoundary)
-                    filteredListings.remove(listing);
-            }
-        }
+        Iterator<Listing> iterator = filteredListings.iterator();
+        ArrayList<Listing> toBeRemoved = new ArrayList<>();
+        int upperBoundary = filterSettings.getRateUpperBoundary();
+        int lowerBoundary = filterSettings.getRatingLowerBoundary();
+        //int upperBoundaryDistance = filterSettings.getDistanceToCampusUpperBoundary();
         EnumSet<Amenity> amenities = filterSettings.getAmenityFilters();
-        for (Listing listing : filteredListings) {
-            if (!listing.getAmenities().containsAll(amenities))
-                filteredListings.remove(listing);
+        while (iterator.hasNext()) {
+            Listing listing = iterator.next();
+            if (listing.getMonthlyRate() > upperBoundary)
+                toBeRemoved.add((listing));
+            else if (listing.getRating() < lowerBoundary)
+                toBeRemoved.add((listing));
+//                if (listing.getRating() > upperBoundary)
+//                    filteredListings.remove(listing);
+            else if (!listing.getAmenities().containsAll(amenities))
+                toBeRemoved.add((listing));
+        }
+        for (Listing listing : toBeRemoved) {
+            filteredListings.remove(listing);
         }
 
+//        if (filterSettings.getRatingLowerBoundary() != null) {
+//            int lowerBoundary = filterSettings.getRatingLowerBoundary();
+//            for (Listing listing : filteredListings) {
+//                if (listing.getRating() < lowerBoundary)
+//                    filteredListings.remove(listing);
+//            }
+//        }
+//        if (filterSettings.getDistanceToCampusUpperBoundary() != null) {
+//            int upperBoundary = filterSettings.getDistanceToCampusUpperBoundary();
+//            for (Listing listing : filteredListings) {
+//                if (listing.getRating() > upperBoundary)
+//                    filteredListings.remove(listing);
+//            }
+//        }
+//        EnumSet<Amenity> amenities = filterSettings.getAmenityFilters();
+//        for (Listing listing : filteredListings) {
+//            if (!listing.getAmenities().containsAll(amenities))
+//                filteredListings.remove(listing);
+//        }
+//
+//    }
     }
 }

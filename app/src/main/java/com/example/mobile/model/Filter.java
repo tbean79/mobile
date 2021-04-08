@@ -16,6 +16,11 @@ public class Filter {
         return rateUpperBoundary;
     }
 
+    public Filter() {
+        rateUpperBoundary = 300;
+        ratingLowerBoundary = 9;
+    }
+
     public void setRateUpperBoundary(Integer rateUpperBoundary) {
         this.rateUpperBoundary = rateUpperBoundary;
     }
@@ -43,4 +48,5 @@ public class Filter {
     public void setAmenityFilters(EnumSet<Amenity> amenityFilters) {
         this.amenityFilters = amenityFilters;
     }
+
 }
