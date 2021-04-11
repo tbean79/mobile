@@ -31,15 +31,15 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.P
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.browse:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new HomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new HomeFragment()).addToBackStack(null).commit();
                 return true;
 
             case R.id.favorites:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new FavoritesFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new FavoritesFragment()).addToBackStack(null).commit();
                 return true;
 
             case R.id.profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profileFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, profileFragment).addToBackStack(null).commit();
                 return true;
         }
         return false;

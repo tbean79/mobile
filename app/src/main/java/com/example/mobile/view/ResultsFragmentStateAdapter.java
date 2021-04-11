@@ -34,6 +34,9 @@ public class ResultsFragmentStateAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return User.getInstance().getFilteredListings().size();
+        if (forHome)
+            return User.getInstance().getFilteredListings().size();
+        else
+            return User.getInstance().getSavedListings().size();
     }
 }
