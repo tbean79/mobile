@@ -26,12 +26,15 @@ public class User extends Application {
 
     private static User instance;
 
+    private boolean didTutorial;
+
     private User() {
         name = "Sample User";
         filterSettings = new Filter();
         allListings = Facade.generateRandomListings();
         filteredListings = new ArrayList<>(allListings);
         savedListings = new ArrayList<>();
+        didTutorial = false;
     }
 
     public static User getInstance() {
@@ -39,6 +42,14 @@ public class User extends Application {
             instance = new User();
         }
         return instance;
+    }
+
+    public boolean isDidTutorial() {
+        return didTutorial;
+    }
+
+    public void setDidTutorial(boolean didTutorial) {
+        this.didTutorial = didTutorial;
     }
 
     public String getName() {

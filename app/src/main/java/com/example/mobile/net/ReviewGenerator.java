@@ -17,6 +17,7 @@ public class ReviewGenerator {
     private static final String[] DUMMY_BODIES = {BODY_1, BODY_2, BODY_3, BODY_4};
 
     private static final int TOP_RATING = 10;
+    private static final int RATING_LOWER_BOUND = 4;
 
     private static final String NAME_1 = "George W";
     private static final String NAME_2 = "Roberta R";
@@ -44,7 +45,8 @@ public class ReviewGenerator {
         List<Review> reviews = new ArrayList<>(count);
 
         for (int i = random.nextInt(MAX_REVIEWS); reviews.size() < count; ) {
-            Review newRev = new Review(DUMMY_NAMES[i], random.nextInt(TOP_RATING),
+            Review newRev = new Review(DUMMY_NAMES[i],
+                    random.nextInt(TOP_RATING - RATING_LOWER_BOUND) + RATING_LOWER_BOUND,
                     DATE, GeneratorUtils.DUMMY_LABELS[i], DUMMY_BODIES[i]);
 
             reviews.add(newRev);

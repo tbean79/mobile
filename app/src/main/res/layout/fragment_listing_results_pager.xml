@@ -4,11 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".view.ListingResultsPagerFragment">
+
+    <RelativeLayout
+        android:id="@+id/tutorialLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="2dp"
+        android:visibility="invisible"
+        >
+
+        <View
+            android:id="@+id/tutorialView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#CC000000"
+            />
+
+
+        <TextView
+            android:id="@+id/tutorialTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FFFFFF"
+            android:paddingTop="150dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="center"
+            />
+
+
+    </RelativeLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/resultsViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 
 </FrameLayout>
