@@ -17,7 +17,7 @@ public class ReviewGenerator {
     private static final String[] DUMMY_BODIES = {BODY_1, BODY_2, BODY_3, BODY_4};
 
     private static final int TOP_RATING = 10;
-    private static final int RATING_LOWER_BOUND = 4;
+    private static final int RATING_LOWER_BOUND = 6;
 
     private static final String NAME_1 = "George W";
     private static final String NAME_2 = "Roberta R";
