@@ -12,7 +12,6 @@ import com.example.mobile.model.User;
 public class ResultsFragmentStateAdapter extends FragmentStateAdapter {
 
     Context mContext;
-    final int LARGE_SIZE=5;
     boolean forHome;
 
     public ResultsFragmentStateAdapter(@NonNull Fragment fragment, Context context, boolean forHome) {

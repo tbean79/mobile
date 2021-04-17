@@ -22,6 +22,7 @@ import android.view.ViewGroup.LayoutParams;
 
 import com.example.mobile.R;
 import com.example.mobile.model.User;
+import com.example.mobile.model.enums.Amenity;
 import com.example.mobile.model.enums.Label;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -40,7 +41,7 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
     private Spinner spinner2;
     private static final String[] ratingPaths = {"9.0", "7.0", "5.0", "3.0", "1.0"};
     private Spinner spinner3;
-    private static final String[] tagPaths = {"tags" ,"Laundry in Unit", "Pool", "Private Room",
+    private static final String[] tagPaths = {"-Please select-" ,"Laundry in Unit", "Pool", "Private Room",
             "Utilities Included", "Wheelchair Accessible"};
 
     CardRecyclerViewAdapter cardRecyclerViewAdapter;
@@ -48,6 +49,8 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
     GridLayoutManager layoutManager;
     ProfileInterface profileInterface;
     View view;
+    LinearLayout tagsLayout;
+
     public ProfileFragment(ProfileInterface profileObserver) {
         // Required empty public constructor
         this.profileInterface = profileObserver;
@@ -93,6 +96,9 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
         spinner3.setAdapter(spinnerAdapter);
         spinner3.setOnItemSelectedListener(this);
 
+        tagsLayout = view.findViewById(R.id.tagsLayout);
+        initLayout(tagsLayout);
+
         fab.setImageResource(R.drawable.ic_search_foreground);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +109,12 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
         });
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        spinner3.setSelection(0);
     }
 
     public interface ProfileInterface{
@@ -170,49 +182,74 @@ public class ProfileFragment extends Fragment implements AdapterView.OnItemSelec
                         System.out.println("$ TAGS!");
                         break;
                     case 1:
-                        // Whatever you want to happen when the second item gets selected;Laundry in Unit
+                        if (!User.getInstance().getFilterSettings().getAmenityFilters().contains(Amenity.IN_UNIT_LAUNDRY)) {
+                            User.getInstance().getFilterSettings().getAmenityFilters().add(Amenity.IN_UNIT_LAUNDRY);
+                            User.getInstance().updateFilteredListings();
+                            addToLayout(tagsLayout, Amenity.IN_UNIT_LAUNDRY);
+                        }
                         break;
                     case 2:
-                        // Whatever you want to happen when the third item gets selected
+                        if (!User.getInstance().getFilterSettings().getAmenityFilters().contains(Amenity.POOL)) {
+                            User.getInstance().getFilterSettings().getAmenityFilters().add(Amenity.POOL);
+                            User.getInstance().updateFilteredListings();
+                            addToLayout(tagsLayout, Amenity.POOL);
+                        }
                         break;
                     case 3:
-                        // Whatever you want to happen when the 4th item gets selectedPrivate Room
-                        System.out.println("Private Room!");
-                        View linearLayout = view.findViewById(R.id.tagsListTextView);
-                        //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
-                        /*
-                        TextView valueTV = new TextView(getContext());
-                        valueTV.setText("X Private Room");
-                        valueTV.setId(position);
-                        valueTV.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-
-                        ((LinearLayout) linearLayout).addView(valueTV);
-
-                        LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        lparams.setMargins(5, 3, 5, 3);
-
-                        Label currentLabel = "X Private Room";
-                        TextView newLabelView = new TextView(getContext());
-                        newLabelView.setLayoutParams(lparams);
-                        newLabelView.setPadding(10, 5, 10, 5);
-                        newLabelView.setBackgroundColor(Color.parseColor("#e5e5e5"));
-                        newLabelView.setTextColor(Color.parseColor("#000000"));
-                        newLabelView.setText(currentLabel.getCaption());
-                        newLabelView.setTextSize(12);
-                        linearLayout.addView(newLabelView); */
-
+                        if (!User.getInstance().getFilterSettings().getAmenityFilters().contains(Amenity.PRIVATE_ROOM)) {
+                            User.getInstance().getFilterSettings().getAmenityFilters().add(Amenity.PRIVATE_ROOM);
+                            User.getInstance().updateFilteredListings();
+                            addToLayout(tagsLayout, Amenity.PRIVATE_ROOM);
+                        }
                         break;
                     case 4:
-                        // Whatever you want to happen when the 5th item gets selected
+                        if (!User.getInstance().getFilterSettings().getAmenityFilters().contains(Amenity.UTILITIES_INCLUDED)) {
+                            User.getInstance().getFilterSettings().getAmenityFilters().add(Amenity.UTILITIES_INCLUDED);
+                            User.getInstance().updateFilteredListings();
+                            addToLayout(tagsLayout, Amenity.UTILITIES_INCLUDED);
+                        }
                         break;
                     case 5:
-                        // Whatever you want to happen when the 5th item gets selected
+                        if (!User.getInstance().getFilterSettings().getAmenityFilters().contains(Amenity.WHEELCHAIR_ACCESSIBLE)) {
+                            User.getInstance().getFilterSettings().getAmenityFilters().add(Amenity.WHEELCHAIR_ACCESSIBLE);
+                            User.getInstance().updateFilteredListings();
+                            addToLayout(tagsLayout, Amenity.WHEELCHAIR_ACCESSIBLE);
+                        }
                         break;
-
                 }
                 break;
         }
+    }
+
+    void initLayout(LinearLayout layout) {
+        Iterator<Amenity> it = User.getInstance().getFilterSettings().getAmenityFilters().iterator();
+        while(it.hasNext()) {
+            Amenity currentAmenity = it.next();
+            addToLayout(layout, currentAmenity);
+        }
+    }
+
+    void addToLayout(final LinearLayout layout, final Amenity amenity) {
+        LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lparams.setMargins(5, 3, 5, 3);
+        final TextView newTagView = new TextView(getContext());
+        newTagView.setLayoutParams(lparams);
+        newTagView.setPadding(10, 5, 10, 5);
+        newTagView.setBackgroundColor(Color.parseColor("#e5e5e5"));
+        newTagView.setTextColor(Color.parseColor("#000000"));
+        String tagString = amenity.getCaption() + "  ✕";
+        newTagView.setText(tagString);
+        newTagView.setTextSize(12);
+        newTagView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout.removeView(newTagView);
+                User.getInstance().getFilterSettings().getAmenityFilters().remove(amenity);
+                User.getInstance().updateFilteredListings();
+            }
+        });
+        layout.addView(newTagView);
     }
 
     @Override

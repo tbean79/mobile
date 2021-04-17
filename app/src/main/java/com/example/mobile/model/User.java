@@ -99,27 +99,5 @@ public class User extends Application {
         for (Listing listing : toBeRemoved) {
             filteredListings.remove(listing);
         }
-
-//        if (filterSettings.getRatingLowerBoundary() != null) {
-//            int lowerBoundary = filterSettings.getRatingLowerBoundary();
-//            for (Listing listing : filteredListings) {
-//                if (listing.getRating() < lowerBoundary)
-//                    filteredListings.remove(listing);
-//            }
-//        }
-//        if (filterSettings.getDistanceToCampusUpperBoundary() != null) {
-//            int upperBoundary = filterSettings.getDistanceToCampusUpperBoundary();
-//            for (Listing listing : filteredListings) {
-//                if (listing.getRating() > upperBoundary)
-//                    filteredListings.remove(listing);
-//            }
-//        }
-//        EnumSet<Amenity> amenities = filterSettings.getAmenityFilters();
-//        for (Listing listing : filteredListings) {
-//            if (!listing.getAmenities().containsAll(amenities))
-//                filteredListings.remove(listing);
-//        }
-//
-//    }
     }
 }

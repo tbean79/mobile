@@ -15,7 +15,7 @@ public class GeneratorUtils {
     public static final EnumSet[] DUMMY_LABELS = new EnumSet[]{LABELS_1, LABELS_2, LABELS_3, LABELS_4};
 
     private static final EnumSet<Amenity> AMENITIES_1 = EnumSet.of(Amenity.WHEELCHAIR_ACCESSIBLE, Amenity.OUTDOOR_GRILL);
-    private static final EnumSet<Amenity> AMENITIES_2 = EnumSet.of(Amenity.IN_UNIT_LAUNDRY);
+    private static final EnumSet<Amenity> AMENITIES_2 = EnumSet.of(Amenity.IN_UNIT_LAUNDRY, Amenity.A_C);
     private static final EnumSet<Amenity> AMENITIES_3 = EnumSet.of(Amenity.A_C, Amenity.POOL, Amenity.WHEELCHAIR_ACCESSIBLE);
     private static final EnumSet<Amenity> AMENITIES_4 = EnumSet.allOf(Amenity.class);
 

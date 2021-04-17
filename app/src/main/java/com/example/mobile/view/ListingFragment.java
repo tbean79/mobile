@@ -154,7 +154,7 @@ public class ListingFragment extends Fragment implements ListingPresenter.View {
         Iterator<Amenity> it = amenities.iterator();
         while(it.hasNext()) {
             Amenity currentAmenity = it.next();
-            amenitiesListString = currentAmenity.getCaption();
+            amenitiesListString += currentAmenity.getCaption();
             if (it.hasNext())
                 amenitiesListString += "\n";
         }
